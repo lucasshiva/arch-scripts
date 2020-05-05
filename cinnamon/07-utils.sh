@@ -13,22 +13,25 @@ install_package() {
         echo "${green}Package "$1" is already installed.${reset}"
     else
         echo "${yellow}Installing package: "$1"${reset}"
-        sudo pacman -S --noconfirm --needed $1
+        yay -S --noconfirm --needed $1
     fi
 }
 
 packages=(
-    zip                   # File archiver
-    unzip                 # File archiver
-    unrar                 # File archiver
-    p7zip                 # File archiver
-    gnome-keyring         # Used to store passwords (like Wi-Fi)
-    ntfs-3g               # Used to mount NTFS drives.
-    bat                   # Cat, but with syntax highlighting.
-    grub-customizer       # A GTK Gui to configure GRUB.
-    htop                  # Terminal system monitor.
-    pamac-zsh-completions # Pamac completions for ZSH
-    tree                  # A command to see a directory's tree.
+    file-roller           # Create and modify archives
+    zip                   # Compressor/archiver for creating and modifying zipfiles
+    unzip                 # For extracting and viewing files in .zip archives
+    unrar                 # better RAR archive support
+    unace                 # ACE archive support
+    lrzip                 # lrzip archive support
+    p7zip                 # Command-line file archiver with high compression ratio
+    gnome-keyring         # Stores passwords and encryption keys
+    ntfs-3g               # NTFS filesystem driver and utilities
+    bat                   # Cat clone with syntax highlighting and git integration
+    grub-customizer       # A graphical grub2 settings manager
+    htop                  # Interactive process viewer
+    pamac-zsh-completions # ZSH completions for pamac
+    tree                  # A directory listing program
     fzf                   # A command line fuzzy finder.
 )
 

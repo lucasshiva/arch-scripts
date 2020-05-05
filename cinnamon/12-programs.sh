@@ -18,7 +18,7 @@ install_package() {
 }
 
 packages=(
-    rofi                      # Application launcher.
+    rofi                      # A window switcher and application launcher
     preload                   # Tool to preload apps in memory.
     qbittorrent               # Torrent client.
     rhythmbox                 # Music player.
