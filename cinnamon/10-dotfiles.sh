@@ -20,7 +20,7 @@ fi
 
 # Clone the repository.
 echo "${yellow}Cloning the repository..${reset}"
-git clone -q $repo $dest
+git clone $repo $dest
 
 echo "${yellow}Moving files..${reset}"
 # Move files/folders to $HOME - Ignores README.md files.
