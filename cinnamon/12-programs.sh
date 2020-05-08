@@ -20,22 +20,19 @@ install_package() {
 packages=(
     rofi                      # A window switcher and application launcher
     preload                   # Tool to preload apps in memory.
-    qbittorrent               # Torrent client.
-    rhythmbox                 # Music player.
-    reflector                 # Script to sort pacman mirrors.
-    steam                     # Used to play games.
-    stremio-beta              # Similar to popcorn time, but better.
-    simplenote-electron-bin   # Note taking app.
+    qbittorrent               # An advanced BitTorrent client
+    reflector                 # Retrieve and filter the latest Pacman mirror list.
+    stremio-beta              # Watch videos, movies, TV series and TV channels.
+    simplenote-electron-bin   # The simplest way to keep notes.
     pcloud-drive              # Cloud storage.
-    the_platinum_searcher-bin # A tool to search file contents.
-    vlc                       # Video player.
-    bitwarden-bin             # Password manager.
+    the_platinum_searcher-bin # A code search tool
+    bitwarden-bin             # A secure and free password manager.
     zenity                    # Needed for Spotify to browser local files.
     ffmpeg-compat-57          # Needed for Spotify to play local files.
     spotify                   # Music streaming app.
-    joplin                    # Another note taking app.
+    joplin                    # A note taking and to-do application with sync.
     plank                     # A simple, yet elegant plank.
-    pulseeffects              # Audio mixer for PulseAudio.
+    pulseeffects              # Audio Effects for Pulseaudio Applications
 )
 
 # Install packages.
