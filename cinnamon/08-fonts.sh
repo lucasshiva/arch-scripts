@@ -29,11 +29,13 @@ packages=(
     adobe-source-code-pro-fonts
     cantarell-fonts
     gnu-free-fonts
-    ttf-ms-fonts
+    #    ttf-ms-fonts
     nerd-fonts
     nerd-fonts-fira-code
     nerd-fonts-hack
     nerd-fonts-source-code-pro
+    ttf-fira-code
+    otf-fira-code
 )
 
 # Install packages.
