@@ -1,44 +1,33 @@
 #!/usr/bin/bash
 
 # This script will install a few programming languages and tools.
-
-# Colors
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-purple=$(tput setaf 5)
-reset=$(tput sgr0)
-
-install_package() {
-    if pacman -Qi $1 &>/dev/null; then
-        echo "${green}Package "$1" is already installed.${reset}"
-    else
-        echo "${yellow}Installing package: "$1"${reset}"
-        yay -S --noconfirm --needed $1
-    fi
-}
+# Yay is needed since some of the packages are only available in the AUR.
 
 languages=(
-    python
-    go
-    lua
-    perl
-    rust
+    python  # High-level scripting language
+    go      # Core compiler tools for the Go programming language
+    lua     # Powerful lightweight language designed for extending applications
+    perl    # A highly capable, feature-rich programming language
+    rust    # Systems programming language focused on safety, speed and concurrency
+    ruby    # An object-oriented language for quick and easy programming
+    nodejs  # Evented I/O for V8 javascript
 )
 
 tools=(
-    visual-studio-code-bin
-    micro-bin
-    mono
+    visual-studio-code-bin  # Editor for building and debugging modern applications
+    micro-bin               # A modern and intuitive terminal-based text editor
+    neovim                  # Fork of Vim aiming to improve user experience
+    mono                    # Free implementation of the .NET platform
+    geany                   # Fast and lightweight IDE
 )
 
-echo "${yellow}Installing languages..${reset}"
-for language in ${languages[@]}; do
-    install_package $language
-done
+# Join packages into a single line.
+# Example: package1 package2 package3..
+languages_string=$(printf " %s" "${languages[@]}")
+tools_string=$(printf " %s" "${tools[@]}")
 
-echo "${yellow}Installing tools..${reset}"
-for tool in ${tools[@]}; do
-    install_package $tool
-done
+# Download packages.
+yay -S --needed --noconfirm $languages_string
+yay -S --needed --noconfirm $tools_string
 
-echo "${green}All done!${reset}"
+echo "Done!"

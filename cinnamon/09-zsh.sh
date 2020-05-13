@@ -1,24 +1,14 @@
 #!/usr/bin/bash
 
 # Change default shell to ZSH
-# Download it if zsh is not installed.
+# You will need to log out and log in for this changes to apply.
 
-# Colors
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-purple=$(tput setaf 5)
-reset=$(tput sgr0)
-
-if ! pacman -Qi zsh >/dev/null; then
-    echo "${yellow}Installing zsh..${reset}"
-    sudo pacman -S --needed --noconfirm zsh
+# Check if ZSH is installed.
+if ! type -p zsh >/dev/null; then
+    sudo pacman -S --noconfirm zsh
 fi
 
-if ! echo $0 | grep zsh >/dev/null; then
-    echo "${purple}Changing default shell..${reset}"
-    chsh -s $(which zsh)
-else
-    echo "${green}Zsh is already the default shell!${reset}"
-fi
+# Change default shell to ZSH.
+chsh -s $(which zsh)
 
-echo "${green}All done!${reset}"
+echo "Done!"

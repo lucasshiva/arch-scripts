@@ -1,38 +1,25 @@
 #!/usr/bin/bash
 
-# Packages needed for bluetooth in Arch Linux.
-
-# Colors
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-purple=$(tput setaf 5)
-reset=$(tput sgr0)
-
-install_package() {
-    if pacman -Qi $1 &>/dev/null; then
-        echo "${green}Package "$1" is already installed.${reset}"
-    else
-        echo "${yellow}Installing package: "$1"${reset}"
-        sudo pacman -S --noconfirm --needed $1
-    fi
-}
+# Bluetooth packages for Arch Linux.
+# For more information: https://wiki.archlinux.org/index.php/Bluetooth
 
 packages=(
-    pulseaudio-bluetooth
-    bluez
-    bluez-libs
-    bluez-utils
-    blueberry
+    pulseaudio-bluetooth    # Bluetooth support for PulseAudio
+    bluez                   # Daemons for the bluetooth protocol stack
+    bluez-libs              # Libraries for the bluetooth protocol stack
+    bluez-utils             # Dev utilities for the bluetooth protocol stack
+    blueberry               # Bluetooth configuration tool
 )
 
-# Install packages.
-for package in ${packages[@]}; do
-    install_package $package
-done
+# Join packages into a single line.
+# Example: package1 package2 package3..
+packages_string=$(printf " %s" "${packages[@]}")
+
+# Download packages.
+sudo pacman -S --needed --noconfirm $packages_string
 
 # Enable and start the bluetooth service.
-echo "${purple}Enabling bluetooth.service${reset}"
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 
-echo "${green}All done!${reset}"
+echo "Done!"

@@ -1,40 +1,37 @@
 #!/usr/bin/bash
 
 # Core programs needed for a basic cinnamon installation.
-
-# Colors
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-purple=$(tput setaf 5)
-reset=$(tput sgr0)
-
-install_package() {
-    if pacman -Qi $1 &>/dev/null; then
-        echo "${green}Package "$1" is already installed.${reset}"
-    else
-        echo "${yellow}Installing package: "$1"${reset}"
-        sudo pacman -S --noconfirm --needed $1
-    fi
-}
+# A base cinnamon install comes without a lot of important software.
+# For a minimal installation, you need:
+# - A terminal emulator
+# - A file manager (Comes with "Nemo" by default)
+# - A web browser
+# - An editor.
+# It's always good to have a backup browser and terminal emulator.
 
 packages=(
-    firefox              # Web Browser
-    chromium             # Web Browser
-    xfce4-screenshooter  # Screenshot tool
-    gnome-system-monitor # System resource monitor
-    gnome-terminal       # Terminal emulator
-    kitty                # Terminal emulator
-    xarchiver            # File archiver
-    xed                  # Text editor.
-    eog                  # Image viewer
-    vlc                  # Video player
-    rhythmbox            # Audio player
-    xreader              # Document viewer
+    firefox              # Standalone web browser from mozilla.org
+    chromium             # Browser built for speed, simplicity, and security
+    xfce4-screenshooter  # Great and simple screenshot tool
+    gnome-system-monitor # View current processes and monitor system state
+    gnome-terminal       # The GNOME Terminal Emulator
+    kitty                # A modern, hackable, featureful, OpenGL-based terminal emulator
+    xarchiver            # GTK+ frontend to various command line archivers
+    xed                  # A small and lightweight text editor
+    nano                 # CLI editor. Pico editor clone with enhancements
+    eog                  # An image viewing and cataloging program
+    celluloid            # Simple GTK+ frontend for mpv
+    rhythmbox            # Music playback and management application
+    evince               # Document viewer for files like PDF and Postscript
+    bookworm             # Simple eBook reader
+    evolution            # Manage your email, contacts and schedule
 )
 
-# Install packages.
-for package in ${packages[@]}; do
-    install_package $package
-done
+# Join packages into a single line.
+# Example: package1 package2 package3..
+packages_string=$(printf " %s" "${packages[@]}")
 
-echo "${green}All done!${reset}"
+# Download packages.
+sudo pacman -S --needed --noconfirm $packages_string
+
+echo "Done!"

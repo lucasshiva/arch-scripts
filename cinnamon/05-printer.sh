@@ -1,40 +1,24 @@
 #!/usr/bin/bash
 
-# This script will enable printing support for Arch Linux.
+# Printing support for Arch Linux.
+# For more information: https://wiki.archlinux.org/index.php/CUPS
 
-# Colors
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-purple=$(tput setaf 5)
-reset=$(tput sgr0)
-
-install_package() {
-    if pacman -Qi $1 &>/dev/null; then
-        echo "${green}Package "$1" is already installed.${reset}"
-    else
-        echo "${yellow}Installing package: "$1"${reset}"
-        sudo pacman -S --noconfirm --needed $1
-    fi
-}
 packages=(
-    cups
-    cups-pdf
-    ghostscript
-    gsfonts
-    gutenprint
-    gtk3-print-backends
-    libcups
-    system-config-printer
+    cups                    # The CUPS Printing System - daemon package
+    cups-pdf                # PDF printer for cups
+    libcups                 # The CUPS Printing System - client libraries and headers
+    system-config-printer   # A CUPS printer configuration tool and status applet
 )
 
-# Install packages.
-for package in ${packages[@]}; do
-    install_package $package
-done
+# Join packages into a single line.
+# Example: package1 package2 package3..
+packages_string=$(printf " %s" "${packages[@]}")
+
+# Download packages.
+sudo pacman -S --needed --noconfirm $packages_string
 
 # Enable and start the cups service.
-echo "${purple}Enabling org.cups.cupsd.service.${reset}"
 sudo systemctl enable org.cups.cupsd.service
 sudo systemctl start org.cups.cupsd.service
 
-echo "${green}All done!${reset}"
+echo "Done!"
