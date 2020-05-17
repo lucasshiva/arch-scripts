@@ -11,33 +11,37 @@ packages=(
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    ttf-dejavu
-    ttf-fira-code
     ttf-fira-mono
     ttf-fira-sans
     ttf-font-awesome
-    ttf-hack
-    ttf-nerd-fonts-symbols
     ttf-opensans
-    ttf-roboto
-    ttf-ubuntu-font-family
-    ttf-ibm-plex
-    ttf-cascadia-pro
     adobe-source-code-pro-fonts
     cantarell-fonts
     gnu-free-fonts
     gsfonts
     xorg-fonts-misc
-    terminus-font-otb
 )
 
+# Some packages may take a long time to build.
+# Remove some packages if you don't want/need all of them.
+# Nerd fonts are patched versions of the original fonts. 
+# For more info: 
 aur_packages=(
-    ttf-unifont
-    ttf-mononoki
-    ttf-iosevka
-    ttf-inconsolata-g
-    siji-git
-    profont-otb
+    nerd-fonts-dejavu-complete
+    nerd-fonts-cascadia-code
+    nerd-fonts-jetbrains-mono
+    nerd-fonts-fantasque-sans-mono
+    nerd-fonts-fira-code
+    nerd-fonts-go-mono
+    nerd-fonts-hack
+    nerd-fonts-inconsolata-go
+    nerd-fonts-iosevka
+    nerd-fonts-mononoki
+    nerd-fonts-noto-sans-mono
+    nerd-fonts-roboto-mono
+    nerd-fonts-source-code-pro
+    nerd-fonts-ubuntu-mono
+    nerd-fonts-ibm-plex-mono
 )
 
 # Join packages into a single line.
