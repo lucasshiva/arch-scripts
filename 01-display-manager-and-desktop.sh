@@ -1,26 +1,26 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
-# Provides a base install of Cinnamon with LightDM.
+# Install LightDM and my Desktop Environments and/or Window Managers.
 
-# Packages to be downloaded.
 packages=(
-    lightdm
-    lightdm-gtk-greeter
-    cinnamon
-    cinnamon-translations
+    lightdm                 # A lightweight display manager.
+    lightdm-gtk-greeter     # GTK+ greeter for LightDM.
+    cinnamon                # DE with advanced features and a tradicional UX.
+    cinnamon-translations   # Translations for Cinnamon and Nemo.
+    xfce4                   # A lightweight and fast DE.
+    xfce4-goodies           # Extra plugins/applications for XFCE.
+    bspwm                   # Tiling window manager based on binary space partitioning.
+    sxhkd                   # Simple X hotkey daemon.
+    xdo                     # Utility for performing actions on windows in X.
 )
 
-# Join packages into a single line.
-# Example: package1 package2 package3..
+# Merge packages into a single string.
 packages_string=$(printf " %s" "${packages[@]}")
 
 # Download packages.
 sudo pacman -S --needed --noconfirm $packages_string
 
-# Check if service is already active.
-# Activate it if false.
-if ! systemctl status lightdm.service >/dev/null; then
-    sudo systemctl enable lightdm.service
-fi                                                               
+# Enable services
+sudo systemctl enable lightdm.service
 
 echo "Done!"

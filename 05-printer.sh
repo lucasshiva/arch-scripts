@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 # Printing support for Arch Linux.
 # For more information: https://wiki.archlinux.org/index.php/CUPS
@@ -10,15 +10,13 @@ packages=(
     system-config-printer   # A CUPS printer configuration tool and status applet
 )
 
-# Join packages into a single line.
-# Example: package1 package2 package3..
+# Merge packages into a single string.
 packages_string=$(printf " %s" "${packages[@]}")
 
 # Download packages.
 sudo pacman -S --needed --noconfirm $packages_string
 
-# Enable and start the cups service.
+# Enable services
 sudo systemctl enable org.cups.cupsd.service
-sudo systemctl start org.cups.cupsd.service
 
 echo "Done!"

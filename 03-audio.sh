@@ -1,7 +1,6 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 # Audio packages for Arch Linux.
-# You probably don't need all of them, comment the ones you don't want/need.
 
 packages=(
     pulseaudio          # A featureful, general-purpose sound server
@@ -23,8 +22,7 @@ packages=(
     pulseeffects        # Audio Effects for Pulseaudio Applications
 )
 
-# Join packages into a single line.
-# Example: package1 package2 package3..
+# Merge packages into a single string.
 packages_string=$(printf " %s" "${packages[@]}")
 
 # Download packages.

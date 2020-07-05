@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 # This script will install a few programming languages and tools.
 # Yay is needed since some of the packages are only available in the AUR.

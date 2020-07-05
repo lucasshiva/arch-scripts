@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 # Font packages for Arch Linux.
 # If you are dual booting with Windows and have mounted your Windows partition,
@@ -11,7 +11,7 @@ packages=(
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    ttf-fira-mono
+    ttf-fira-code
     ttf-fira-sans
     ttf-font-awesome
     ttf-opensans
@@ -20,17 +20,17 @@ packages=(
     gnu-free-fonts
     gsfonts
     xorg-fonts-misc
+    otf-fantasque-sans-mono
 )
 
 # Some packages may take a long time to build.
 # Remove some packages if you don't want/need all of them.
 # Nerd fonts are patched versions of the original fonts. 
-# For more info: 
+# For more info: https://www.nerdfonts.com/
 aur_packages=(
     nerd-fonts-dejavu-complete
     nerd-fonts-cascadia-code
     nerd-fonts-jetbrains-mono
-    nerd-fonts-fantasque-sans-mono
     nerd-fonts-fira-code
     nerd-fonts-go-mono
     nerd-fonts-hack
@@ -44,12 +44,11 @@ aur_packages=(
     nerd-fonts-ibm-plex-mono
 )
 
-# Join packages into a single line.
-# Example: package1 package2 package3..
+# Merge packages into a single string.
 packages_string=$(printf " %s" "${packages[@]}")
 aur_packages_string=$(printf " %s" "${aur_packages[@]}")
 
-# Download packages. Comment the second line to exclude AUR packages.
+# Download packages.
 sudo pacman -S --needed --noconfirm $packages_string
 yay -S --needed --noconfirm $aur_packages_string
 

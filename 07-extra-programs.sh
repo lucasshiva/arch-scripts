@@ -1,38 +1,35 @@
-#!/bin/bash
+#!/usr/bin/sh
 
-# Includes several programs that are not essencial, but are still useful.
-# Comment the ones you don't want/need.
-# Yay is only needed for the AUR packages.
+# Extra programs that I may want to use.
 
 packages=(
-    rofi                # A window switcher and application launcher
-    preload             # Tool to preload apps in memory
-    qbittorrent         # An advanced BitTorrent client
-    reflector           # Retrieve and filter the latest Pacman mirror list
-    zenity              # Needed for Spotify to browse local files
-    plank               # A simple, yet elegant plank
-    calibre             # Fully-featured eBook management application  
+    qbittorrent             # An advanced BitTorrent client
+    plank                   # A simple, yet elegant plank
+    calibre                 # Fully-featured eBook management application 
+    lxappearance            # Feature-rich GTK+ theme switcher of the LXDE Desktop
+    gnome-system-monitor    # View current processes and monitor system state
+    baobab                  # A graphical directory tree analyzer
+    eog                     # An image viewing and cataloging program
+    bookworm                # A simple user centric eBook reader
+    midori                  # Lightweight web browser
+    xed                     # A small and lightweight text editor
+    nemo                    # Cinnamon file manager (Nautilus fork)
 )
 
-# Most of these take a LONG time to build. 
-# Most will ask for your password at the end, don't run this part and go afk.
 aur_packages=(
-    stremio-beta              # Watch videos, movies, TV series and TV channels
-    simplenote-electron-bin   # The simplest way to keep notes
-    pcloud-drive              # Cloud storage
-    bitwarden-bin             # A secure and free password manager.
-    ffmpeg-compat-57          # Needed for Spotify to play local files
-    spotify                   # A proprietary music streaming service
-    joplin                    # A note taking and to-do application with sync
+    # A note taking and to-do application with synchronization capabilities
+    joplin
+
+    # Note applications that works on top of a local folder of plain text Markdown files
+    obsidian-appimage       
 )
 
-# Join packages into a single line.
-# Example: package1 package2 package3..
+# Merge packages into a single string.
 packages_string=$(printf " %s" "${packages[@]}")
 aur_packages_string=$(printf " %s" "${aur_packages[@]}")
 
-# Download packages. Comment the second line to exclude AUR packages.
+# Download packages.
 sudo pacman -S --needed --noconfirm $packages_string
 yay -S --needed --noconfirm $aur_packages_string
 
-echo "All done!"
+echo "Done!"

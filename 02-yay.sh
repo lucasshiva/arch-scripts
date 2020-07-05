@@ -1,8 +1,7 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 # This script will install Yay and Git (if needed).
 # Yay is an AUR (Arch User Repository) helper. 
-# It will be used in some of the next scripts.
 
 install_yay() {
     if ! [ -e $HOME/yay ]; then

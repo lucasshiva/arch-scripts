@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 
 # Includes a few themes that don't come with Cinnamon.
 # Yay is only needed for AUR packages.
@@ -12,12 +12,11 @@ aur_packages=(
     numix-cursor-theme
 )
 
-# Join packages into a single line.
-# Example: package1 package2 package3..
+# Merge packages into a single string.
 packages_string=$(printf " %s" "${packages[@]}")
 aur_packages_string=$(printf " %s" "${aur_packages[@]}")
 
-# Download packages. Comment the second line to exclude AUR packages.
+# Download packages.
 sudo pacman -S --needed --noconfirm $packages_string
 yay -S --needed --noconfirm $aur_packages_string
 
